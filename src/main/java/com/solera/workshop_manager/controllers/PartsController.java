@@ -7,6 +7,8 @@ import com.solera.workshop_manager.contracts.IPartsService;
 import com.solera.workshop_manager.models.Parts;
 import com.solera.workshop_manager.service.PartsServiceImp;
 
+import jakarta.validation.Valid;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,7 +52,7 @@ public class PartsController {
     }
 
     @PostMapping("/parts")
-    public ResponseEntity<String> createPart(@RequestBody Parts parts){
+    public ResponseEntity<String> createPart(@Valid @RequestBody Parts parts){
         partsServPersist.save(parts);
         return new ResponseEntity<String>("Part: " + parts.getPart_name() + " created successfully", HttpStatus.CREATED);
     }

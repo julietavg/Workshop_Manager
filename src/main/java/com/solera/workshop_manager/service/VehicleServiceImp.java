@@ -2,10 +2,8 @@ package com.solera.workshop_manager.service;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.solera.workshop_manager.contracts.IVehicleService;
 import com.solera.workshop_manager.models.Vehicle;
 import com.solera.workshop_manager.repository.VehicleRepository;

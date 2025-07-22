@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.solera.workshop_manager.contracts.IWorkshopService;
 import com.solera.workshop_manager.models.Workshop;
 
+import jakarta.validation.Valid;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +30,7 @@ public class WorkshopController {
     }
 
     @PostMapping("/workshop")
-    public ResponseEntity<String> createWorkshop(@RequestBody Workshop workshop) {
+    public ResponseEntity<String> createWorkshop(@Valid @RequestBody Workshop workshop) {
         workshopService.save(workshop);
         return new ResponseEntity<String>("Workshop " + workshop.getName() + " has been saved successfully!",
                 org.springframework.http.HttpStatus.CREATED);

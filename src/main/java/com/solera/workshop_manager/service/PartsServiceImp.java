@@ -2,12 +2,7 @@ package com.solera.workshop_manager.service;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
 import com.solera.workshop_manager.contracts.IPartsService;
 import com.solera.workshop_manager.models.Parts;
 import com.solera.workshop_manager.repository.PartsRepository;
