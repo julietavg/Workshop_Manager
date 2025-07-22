@@ -4,7 +4,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.solera.workshop_manager.contracts.IWorkshopService;
-import com.solera.workshop_manager.models.Parts;
 import com.solera.workshop_manager.models.Workshop;
 
 import java.util.ArrayList;

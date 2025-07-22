@@ -10,6 +10,5 @@ public interface IVehicleService {
     Boolean deletedById(int vehicle_id);
     Vehicle findById(int vehicle_id);
     List <Vehicle> findAll();
-    Boolean update(int vehicle_id, Vehicle vehicle);
-    //update
+    Vehicle updateVehicle(Integer vehicle_id, Vehicle vehicle);
 }
