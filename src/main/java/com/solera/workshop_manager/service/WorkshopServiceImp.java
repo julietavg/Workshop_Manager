@@ -2,11 +2,13 @@ package com.solera.workshop_manager.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.solera.workshop_manager.contracts.IWorkshopService;
 import com.solera.workshop_manager.models.Workshop;
 import com.solera.workshop_manager.repository.WorkshopRepository;
 
-
+@Service
 public class WorkshopServiceImp implements IWorkshopService{
 
     private final WorkshopRepository workshopRepository;
