@@ -3,6 +3,7 @@ package com.solera.workshop_manager.models;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -29,7 +30,7 @@ public class Workshop{
     private String description;
 
     @OneToMany(mappedBy = "workshop", cascade = CascadeType.ALL)
-    @JsonIgnore
+    @JsonManagedReference
     private List<Vehicle> vehicles;
 
 }

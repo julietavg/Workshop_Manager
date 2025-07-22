@@ -43,10 +43,20 @@ public class WorkshopServiceImp implements IWorkshopService{
     }
 
     @Override
-    public List<Workshop> findAll() {
-        List<Workshop> workshops = (List <Workshop>) workshopRepository.findAll();
-        return workshops;
+@Transactional
+public List<Workshop> findAll() {
+    List<Workshop> workshops = (List<Workshop>) workshopRepository.findAll();
+    for (Workshop w : workshops) {
+        if (w.getVehicles() != null) {
+            w.getVehicles().forEach(v -> {
+                if (v.getParts() != null) {
+                    v.getParts().size(); // fuerza la carga
+                }
+            });
+        }
     }
+    return workshops;
+}
 
     @Override
     public Workshop updateWorkshop(Integer id, Workshop workshop) {

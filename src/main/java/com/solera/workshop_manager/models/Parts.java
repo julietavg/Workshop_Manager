@@ -1,5 +1,8 @@
 package com.solera.workshop_manager.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,6 +27,8 @@ public class Parts {
     private String part_description;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "vehicle_id")
+
     private Vehicle vehicle;
 }
