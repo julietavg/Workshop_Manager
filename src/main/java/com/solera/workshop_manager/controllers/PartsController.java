@@ -16,11 +16,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
 @RestController
-@RequestMapping("/API/v1")
+@RequestMapping("/api/v1")
 public class PartsController {
     private IPartsService partsServPersist;
 
@@ -39,9 +40,12 @@ public class PartsController {
     public String getPartsById(@PathVariable Integer id){
         Parts part = partsServPersist.findById(id);
         if (part == null) {
-            return "Part not found";
+            return "Parts with ID " + id + " not found";
         } else {
-            return "Part with ID " + id + part.toString();
+            return "Part found:\n" +
+                "ID: " + part.getPart_id() + "\n" +
+                "Name: " + part.getPart_name() + "\n" +
+                "Description: " + part.getPart_description();
         }
     }
 
@@ -57,7 +61,10 @@ public class PartsController {
         return "Part with ID " + id + " deleted successfully";
     }
     
-    //TO-DO Implement update method
-    
+    @PutMapping("/parts/{id}")
+    public Parts updateParts(@PathVariable Integer id, @RequestBody Parts parts) {
+        Parts newPart = partsServPersist.updateParts(id, parts);
+        return newPart;
+    }
 
 }

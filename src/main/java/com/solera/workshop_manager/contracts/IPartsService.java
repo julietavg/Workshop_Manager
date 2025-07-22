@@ -9,6 +9,6 @@ public interface IPartsService {
     Boolean deleteById(int parts_id);
     Parts findById(int parts_id);
     List<Parts> findAll();
+    Parts updateParts(Integer parts_id, Parts parts);
 
-    //Update
 }
