@@ -1,6 +1,7 @@
 package com.solera.workshop_manager.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -45,6 +46,19 @@ public class WorkshopServiceImp implements IWorkshopService{
     public List<Workshop> findAll() {
         List<Workshop> workshops = (List <Workshop>) workshopRepository.findAll();
         return workshops;
+    }
+
+    @Override
+    public Workshop updateWorkshop(Integer id, Workshop workshop) {
+       Optional<Workshop> optionalWorkshop = workshopRepository.findById(id);
+        if (optionalWorkshop.isPresent()) {
+            Workshop existingWorkshop = optionalWorkshop.get();
+            existingWorkshop.setName(workshop.getName());
+            existingWorkshop.setDescription(workshop.getDescription());
+            return workshopRepository.save(existingWorkshop);
+        } else {
+            return null;
+        }
     }
 
 

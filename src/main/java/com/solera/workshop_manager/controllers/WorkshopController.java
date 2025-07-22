@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.solera.workshop_manager.contracts.IWorkshopService;
+import com.solera.workshop_manager.models.Parts;
 import com.solera.workshop_manager.models.Workshop;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
@@ -60,4 +62,11 @@ public class WorkshopController {
                 "Vehicles: " + (workshop.getVehicles() != null ? workshop.getVehicles().size() : 0);
     }
 
+     @PutMapping("/workshop/{id}")
+    public Workshop updateWorkshop(@PathVariable Integer id, @RequestBody Workshop workshop) {
+        Workshop newWorkshop = workshopService.updateWorkshop(id, workshop);
+        return newWorkshop;
+    }
+
+    
 }

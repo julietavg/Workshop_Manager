@@ -10,6 +10,7 @@ public interface IWorkshopService {
     Boolean deletedById(int workshop_id);
     Workshop findById(int workshop_id);
     List <Workshop> findAll();
+    Workshop updateWorkshop(Integer workshop_id, Workshop workshop);
 
     
 }
