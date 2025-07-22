@@ -6,17 +6,17 @@ import com.solera.workshop_manager.contracts.IVehicleService;
 import com.solera.workshop_manager.models.Vehicle;
 import com.solera.workshop_manager.repository.VehicleRepository;
 
-public class ProductServiceImp implements IVehicleService {
+public class VehicleServiceImp implements IVehicleService {
 
     private final VehicleRepository vehicleRepository;
 
-    public ProductServiceImp(VehicleRepository vehicleRepository) {
+    public VehicleServiceImp(VehicleRepository vehicleRepository) {
         this.vehicleRepository = vehicleRepository;
     }
 
     @Override
     public Boolean save(Vehicle vehicle) {
-        if (vehicleRepository.save(vehicle).getVehicle_vin() != null)
+        if (vehicleRepository.save(vehicle) != null)
             return true;
         return false;
 
@@ -41,5 +41,13 @@ public class ProductServiceImp implements IVehicleService {
         List<Vehicle> vehicles = (List<Vehicle>) vehicleRepository.findAll();
         return vehicles;
     }
+
+    @Override
+    public Boolean update(int vehicle_id, Vehicle vehicle) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
+    }
+
+
 
 }
