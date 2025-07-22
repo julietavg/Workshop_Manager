@@ -3,6 +3,7 @@ package com.solera.workshop_manager.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.solera.workshop_manager.contracts.IWorkshopService;
 import com.solera.workshop_manager.models.Workshop;
@@ -29,13 +30,15 @@ public class WorkshopServiceImp implements IWorkshopService{
        workshopRepository.deleteById(workshop_id);
        return true;
     }
-
+    
     @Override
+    @Transactional
     public Workshop findById(int workshop_id) {
-        if(workshopRepository.findById(workshop_id).isPresent()){
-            return workshopRepository.findById(workshop_id).get();
+        Workshop workshop = workshopRepository.findById(workshop_id).orElse(null);
+        if (workshop != null) {
+            workshop.getVehicles().size();
         }
-        return null;
+        return workshop;
     }
 
     @Override

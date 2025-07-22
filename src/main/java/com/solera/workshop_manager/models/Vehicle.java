@@ -2,6 +2,8 @@ package com.solera.workshop_manager.models;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -36,9 +38,10 @@ public class Vehicle {
     //Llave foranea
     @ManyToOne
     @JoinColumn(name = "workshop_id")
+    @JsonIgnore
     private Workshop workshop;
 
-
+    
     @OneToMany(mappedBy = "vehicle",cascade = CascadeType.ALL)
     private List<Parts> parts;
 
